@@ -12,6 +12,11 @@ public class Premios {
         this.nombrePremio = "";
         this.ciudad = "";
     }
+    
+    public Premios(String nombre, String ciudad){
+        this.nombrePremio = nombre;
+        this.ciudad = ciudad;
+    }
 
     public String getNombrePremio() {
         return nombrePremio;

@@ -27,7 +27,6 @@ public class Consola {
         peliculaActual.setDirector(teclado.nextLine());
         System.out.print("valoracion: ");
         peliculaActual.setValoracion(teclado.nextFloat());
-        return peliculaActual;
 
         Premios premioActual = null;
         for (int x = 0; x < peliculaActual.getNumPremios(); x++) {
@@ -40,7 +39,7 @@ public class Consola {
             PremiosGanados.add(premioActual);
 
         }
-        peliculaActual.getArrPremios(PremiosGanados);
+        peliculaActual.setArrPremios(PremiosGanados);
         return peliculaActual;
     }
 
