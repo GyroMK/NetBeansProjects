@@ -17,16 +17,16 @@ public class Consola {
         ArrayList<Premios> PremiosGanados = new ArrayList<>();
         Pelicula peliculaActual = new Pelicula();
 
-        System.out.print("Nombre: ");
-        peliculaActual.setNombre(teclado.nextLine());
-        System.out.print("Duracion: ");
-        peliculaActual.setDuracion(teclado.nextInt());
-        System.out.print("Pais: ");
-        peliculaActual.setPais(teclado.nextLine());
-        System.out.print("Director: ");
-        peliculaActual.setDirector(teclado.nextLine());
-        System.out.print("valoracion: ");
-        peliculaActual.setValoracion(teclado.nextFloat());
+        peliculaActual.setNombre(pideCadena("Nombre: "));
+        peliculaActual.setDuracion(pideEntero("Duracion: "));
+        System.out.print("Genero: ");
+        peliculaActual.setGenero(PideGenero());
+        peliculaActual.setPais(pideCadena("Pais: "));
+        peliculaActual.setDirector(pideCadena("Director: "));
+        peliculaActual.setValoracion(pideDecimal("Valoracion: "));
+        System.out.println("Numero de premios: ");
+        peliculaActual.setNumPremios(teclado.nextInt());
+        teclado.nextLine();
 
         Premios premioActual = null;
         for (int x = 0; x < peliculaActual.getNumPremios(); x++) {
@@ -35,12 +35,30 @@ public class Consola {
             premioActual.setNombrePremio(teclado.nextLine());
             System.out.print("Ciudad: ");
             premioActual.setCiudad(teclado.nextLine());
-            
+
             PremiosGanados.add(premioActual);
 
         }
         peliculaActual.setArrPremios(PremiosGanados);
         return peliculaActual;
+    }
+
+    public void muestraDatos(Pelicula peliculaActual) {
+        System.out.println("==============================");
+        System.out.println("Nombre: " + peliculaActual.getNombre());
+        System.out.println("Duracion:  " + peliculaActual.getDuracion());
+        System.out.println("Pais: " + peliculaActual.getPais());
+        System.out.println("Director: " + peliculaActual.getDirector());
+        System.out.println("Valoracion: " + peliculaActual.getValoracion());
+        if (peliculaActual.getNumPremios() == 0) {
+            System.out.println("Esta pelicula no tiene premios");
+        } else {
+            System.out.println("Premios que ha ganado: " + peliculaActual.getNumPremios());
+        }
+        for (Premios p : peliculaActual.getArrPremios()) {
+            System.out.println("\tNombre del premio: " + p.getNombrePremio());
+            System.out.println("\tCiudad del premio:: " + p.getCiudad());
+        }
     }
 
     public String pideCadena(String pregunta) {
@@ -92,4 +110,5 @@ public class Consola {
         } while (opcion > 4 || opcion < 1);
         return Genero.ACCION;
     }
+
 }

@@ -55,9 +55,8 @@ public class Ficheros {
             br.close();
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
-          catch (IOException ex){
-                   ex.printStackTrace();
-                   }
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }

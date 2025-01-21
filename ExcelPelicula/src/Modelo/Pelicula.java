@@ -23,7 +23,8 @@ public class Pelicula {
     private ArrayList<Premios> arrPremios;
     private float valoracion;
     private int numPremios;
-    
+    private Genero genero;
+
     public Pelicula(){
         this.nombre = "";
         this.duracion = 0;
@@ -88,5 +89,12 @@ public class Pelicula {
         this.valoracion = valoracion;
     }
     
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
     
 }
