@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.Pelicula;
 import Modelo.Premios;
 import Vista.Consola;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Principal {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Consola c = new Consola();
         Ficheros f = new Ficheros();
         Scanner teclado = new Scanner(System.in);

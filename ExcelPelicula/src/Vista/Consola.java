@@ -117,7 +117,7 @@ public class Consola {
         System.out.println("2.Mostrar todas las peliculas");
         System.out.println("3.Guardar lista de peliculas en documento de texto");
         System.out.println("4.Guardar en excel todas las peliculas");
-        System.out.println("5.Leer del documento de texto las peliculas");
+        System.out.println("5.Leer del documento de texto las peliculas\n");
         int menu = teclado.nextInt();
         
         return menu;
