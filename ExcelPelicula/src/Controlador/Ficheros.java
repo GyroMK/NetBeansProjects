@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -26,12 +27,12 @@ public class Ficheros {
 
     Consola c = new Consola();
 
-    public void escribir(ArrayList<Pelicula> grupoPelicula) {
+    public void escribir(ArrayList<Pelicula> grupoPelicula) throws IOException {
         File archivo = new File("peliculas.txt");
         PrintWriter pw = null;
 
         try {
-            pw = new PrintWriter(archivo);
+            pw = new PrintWriter(new FileWriter(archivo), true);
             for (Pelicula p : grupoPelicula) {
                 pw.println(p.getNombre());
                 pw.println(p.getDuracion());
