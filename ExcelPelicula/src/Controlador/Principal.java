@@ -1,7 +1,9 @@
 package Controlador;
 
 import Modelo.Pelicula;
+import Modelo.Premios;
 import Vista.Consola;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -15,21 +17,35 @@ public class Principal {
      */
     public static void main(String[] args) {
         Consola c = new Consola();
+        Ficheros f = new Ficheros();
         Scanner teclado = new Scanner(System.in);
         Pelicula p = null;
+        int menu;
+        ArrayList<Pelicula> grupoPeliculas = new ArrayList<>();
 
-        int menu = teclado.nextInt();
-
+       
         do {
-            switch (menu) {
+            switch (c.Menu()) {
                 case 1:
-                    p = c.pideDatos();
+                    grupoPeliculas.add(c.pideDatos());
+                    break;
                 case 2:
-                    c.muestraDatos(p);
+                    for (int i = 0; i < grupoPeliculas.size(); i++) {
+                        c.muestraDatos(grupoPeliculas.get(i));
+                    }
+                    break;
+                case 3:
+                    f.escribir(grupoPeliculas);
+                    break;
+                case 4:
+                    f.escribirExcel(grupoPeliculas);
+                    break;
+                case 5:
+                    f.leer();
                     break;
             }
 
-        } while (menu > 4 || menu < 1);
+        } while (c.Menu() < 5 || c.Menu() > 1);
 
     }
 

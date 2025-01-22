@@ -46,7 +46,7 @@ public class Consola {
     public void muestraDatos(Pelicula peliculaActual) {
         System.out.println("==============================");
         System.out.println("Nombre: " + peliculaActual.getNombre());
-        System.out.println("Duracion:  " + peliculaActual.getDuracion());
+        System.out.println("Duracion:  " + peliculaActual.getDuracion()+"h.");
         System.out.println("Pais: " + peliculaActual.getPais());
         System.out.println("Director: " + peliculaActual.getDirector());
         System.out.println("Valoracion: " + peliculaActual.getValoracion());
@@ -57,7 +57,7 @@ public class Consola {
         }
         for (Premios p : peliculaActual.getArrPremios()) {
             System.out.println("\tNombre del premio: " + p.getNombrePremio());
-            System.out.println("\tCiudad del premio:: " + p.getCiudad());
+            System.out.println("\tCiudad del premio: " + p.getCiudad());
         }
     }
 
@@ -110,5 +110,17 @@ public class Consola {
         } while (opcion > 4 || opcion < 1);
         return Genero.ACCION;
     }
+    
+    public int Menu(){
+    Scanner teclado = new Scanner(System.in);
+        System.out.println("1.Insertar pelicula");
+        System.out.println("2.Mostrar todas las peliculas");
+        System.out.println("3.Guardar lista de peliculas en documento de texto");
+        System.out.println("4.Guardar en excel todas las peliculas");
+        System.out.println("5.Leer del documento de texto las peliculas");
+        int menu = teclado.nextInt();
+        
+        return menu;
+}
 
 }
