@@ -1,4 +1,3 @@
-
 package controlador;
 
 import vista.Consola;
@@ -14,8 +13,8 @@ public class Principal {
      */
     public static void main(String[] args) {
         Consola c = new Consola();
-        
+
         c.Menu();
     }
-    
+
 }

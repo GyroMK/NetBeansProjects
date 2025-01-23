@@ -1,4 +1,3 @@
-
 package modelo;
 
 import java.util.ArrayList;
@@ -57,5 +56,5 @@ public class Viajero {
     public void setArrViajes(ArrayList<Viajes> ArrViajes) {
         this.ArrViajes = ArrViajes;
     }
-    
+
 }

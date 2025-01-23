@@ -1,4 +1,3 @@
-
 package modelo;
 
 /**
@@ -62,5 +61,5 @@ public class Viajes {
     public void setValoracion(int valoracion) {
         this.valoracion = valoracion;
     }
-    
+
 }

@@ -34,8 +34,6 @@ public class Consola {
     Properties propiedades = new Properties();
     InputStream entrada = null;
 
-    
-
     public void Menu() {
         Scanner teclado = new Scanner(System.in);
         int opcion;
@@ -44,10 +42,9 @@ public class Consola {
                 System.out.println("1. Spanish");
                 System.out.println("2. English");
                 System.out.println("3. French");
-                
+
                 opcion = teclado.nextInt();
-                
-                
+
                 if (opcion >= 1 && opcion <= 3) {
                     switch (opcion) {
                         case 1:
@@ -78,7 +75,6 @@ public class Consola {
             e.printStackTrace();
         }
     }
-    
 
     public void MenuUsuario() throws IOException {
         propiedades.load(entrada);
@@ -105,6 +101,5 @@ public class Consola {
         } while (user < 5 || user > 1);
 
     }
-    
-    
+
 }
