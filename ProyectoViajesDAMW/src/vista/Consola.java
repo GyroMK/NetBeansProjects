@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.Ficheros;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class Consola {
     Properties propiedades = new Properties();
     InputStream entrada = null;
     Viajero viajeroActual = new Viajero();
+    
 
     public void Menu() {
         Scanner teclado = new Scanner(System.in);
@@ -82,10 +84,12 @@ public class Consola {
     }
 
     public void MenuUsuario() throws IOException {
+        Ficheros f = new Ficheros();
         propiedades.load(entrada);
         Scanner teclado = new Scanner(System.in);
         int user;
-        Viajero v = new Viajero();
+        ArrayList<Viajero> grupoViajero = new ArrayList<>();
+        Viajero viajeroActual = null;
 
         do {
             System.out.println("1. " + propiedades.getProperty("insertar"));
@@ -95,12 +99,20 @@ public class Consola {
             user = teclado.nextInt();
             switch (user) {
                 case 1:
-                    v = pideDatos();
+                    viajeroActual = pideDatos();
+                    grupoViajero.add(viajeroActual);
+                    String nombretxt=viajeroActual.getNombre().concat(".viajes");
+                    f.escribir(grupoViajero,nombretxt);
                     break;
                 case 2:
-                    muestraDatos(v);
+                    for (int i = 0; i < grupoViajero.size(); i++) {
+                        muestraDatos(grupoViajero.get(i));
+                    }
                     break;
                 case 3:
+                    
+                    String txt=viajeroActual.getNombre().concat(".html");
+                    f.EscribirHTML(grupoViajero, txt);
                     break;
                 case 4:
                     System.exit(0);
@@ -111,7 +123,7 @@ public class Consola {
 
     }
 
-    public Viajero pideDatos() {
+    public Viajero pideDatos() throws IOException {
         Scanner teclado = new Scanner(System.in);
         ArrayList<Viajes> ViajesRealizados = new ArrayList<>();
         Viajero viajeroActual = new Viajero();
@@ -133,13 +145,18 @@ public class Consola {
         }
         viajeroActual.setArrViajes(ViajesRealizados);
         return viajeroActual;
+        
     }
 
     public void muestraDatos(Viajero viajeroActual) {
         System.out.println("==============================");
         System.out.println((propiedades.getProperty("nombre") + ": " + viajeroActual.getNombre()));
         System.out.println((propiedades.getProperty("edad") + ": " + viajeroActual.getEdad()));
-        System.out.println((propiedades.getProperty("numViajes") + ": " + viajeroActual.getNumViajes()));
+        if (viajeroActual.getNumViajes() == 0) {
+                    System.out.println(propiedades.getProperty("noViajes"));
+                } else {
+                    System.out.println((propiedades.getProperty("numViajes") + ": " + viajeroActual.getNumViajes()));
+                }
         for (Viajes v : viajeroActual.getArrViajes()) {
             System.out.println("\t" + (propiedades.getProperty("destino") + ": " + v.getDestino()));
             System.out.println("\t" + (propiedades.getProperty("tiempo") + ": " + v.getTiempo()));
@@ -186,7 +203,7 @@ public class Consola {
                 case 3:
                     return Acompanyante.SOLO;
                 default:
-                    System.out.println("Introduze una opcion correcta");
+                    System.out.println(propiedades.getProperty("inCorrect"));
             }
         } while (opcion > 3 || opcion < 1);
         return Acompanyante.SOLO;
