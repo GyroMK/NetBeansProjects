@@ -10,10 +10,10 @@ public class InsertandoDatos {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
 
-        System.out.print("Introduzca una descripciÃ³n para el artÃ­culo: ");
+        System.out.print("Introduzca una descripción para el artículo: ");
         String descripcion = teclado.nextLine();
-        System.out.print("Introduzca un precio para el artÃ­culo: " + descripcion);
-        int precio = teclado.nextInt();
+        System.out.print("Introduzca un precio para el artículo: ");
+        float precio = teclado.nextFloat();
         //String nombre = "Gonzalo";
         try {										// Java Data Base Connection
             Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/db_articulos", "root", "");
@@ -22,7 +22,7 @@ public class InsertandoDatos {
             consulta.executeUpdate("insert into articulos (descripcion, precio) values ('"
                     + descripcion + "'," + precio + ")");
             conexion.close();
-            System.out.println("ArtÃ­culo guardado correctamente");
+            System.out.println("Artículo guardado correctamente");
         } catch (SQLException e) {
             e.printStackTrace();
         }

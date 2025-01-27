@@ -12,10 +12,10 @@ public class ModificandoDatos {
         System.out.print("Introduzca el idArticulo a modificar: ");
         int idArticulo = teclado.nextInt();
         teclado.nextLine();
-        System.out.print("Introduzca la descripci√≥n a modificar: ");
+        System.out.print("Introduzca la descripciÛn a modificar: ");
         String descripcion = teclado.nextLine();
         System.out.print("Introduzca el precio a modificar: ");
-        int precio = teclado.nextInt();
+        float precio = teclado.nextFloat();
 
         Connection conexion;
         try {
@@ -26,14 +26,14 @@ public class ModificandoDatos {
             int valor = consulta.executeUpdate("update articulos set descripcion ='"
                     + descripcion + "', precio=" + precio + " where idArticulo=" + idArticulo);
 
-            // Comprobamos si est√° bien estructurada la sentencia
-            System.out.println("update articulos set descripcion ='"
+            // Comprobamos si est· bien estructurada la sentencia
+            /*System.out.println("update articulos set descripcion ='"
                     + descripcion + "', precio=" + precio + " where idArticulo=" + idArticulo);
-
+            */
             if (valor == 1) {
-                System.out.println("Art√≠culo modificado correctamente");
+                System.out.println("ArtÌculo modificado correctamente");
             } else {
-                System.out.println("No existe un art√≠culo con dicho identificador");
+                System.out.println("No existe un artÌculo con dicho identificador");
             }
             conexion.close();
         } catch (SQLException e) {
