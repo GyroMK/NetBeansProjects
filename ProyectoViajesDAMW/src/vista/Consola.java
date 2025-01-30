@@ -41,9 +41,9 @@ public class Consola {
     Viajero viajeroActual = new Viajero();
     
 
-    public void Menu() {
+    public int Menu() {
         Scanner teclado = new Scanner(System.in);
-        int opcion;
+        int opcion = 0;
         try {
             do {
                 System.out.println("1. Spanish");
@@ -81,6 +81,7 @@ public class Consola {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return opcion;
     }
 
     public void MenuUsuario() throws IOException {
@@ -105,14 +106,12 @@ public class Consola {
                     f.escribir(grupoViajero,nombretxt);
                     break;
                 case 2:
-                    for (int i = 0; i < grupoViajero.size(); i++) {
-                        muestraDatos(grupoViajero.get(i));
-                    }
+                    f.leer();
                     break;
                 case 3:
                     
                     String txt=viajeroActual.getNombre().concat(".html");
-                    f.EscribirHTML(grupoViajero, txt);
+                    f.EscribirHTML(viajeroActual, txt);
                     break;
                 case 4:
                     System.exit(0);

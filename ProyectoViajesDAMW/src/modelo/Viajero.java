@@ -1,12 +1,20 @@
 package modelo;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import vista.Consola;
 
 /**
  *
  * @author sergi.carmona
  */
-public class Viajero {
+public class Viajero implements Serializable {
 
     private String nombre;
     private int edad;
@@ -24,6 +32,49 @@ public class Viajero {
         this.edad = edad;
         this.numViajes = numViajes;
     }
+
+    public void muestraViajero() {
+        Consola c = new Consola();
+        InputStream entrada = null;
+        Properties propiedades = new Properties();
+            try {
+                if (c.Menu() == 1) {
+                    entrada = new FileInputStream("esp.properties");
+                } else if (c.Menu() == 2) {
+                    entrada = new FileInputStream("ing.properties");
+                } else {
+                    entrada = new FileInputStream("fra.properties");
+                }
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Viajero.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            System.out.println("==============================");
+            System.out.println((propiedades.getProperty("nombre") + ": " + nombre));
+            System.out.println((propiedades.getProperty("edad") + ": " + edad));
+            if (numViajes == 0) {
+                System.out.println(propiedades.getProperty("noViajes"));
+            } else {
+                System.out.println((propiedades.getProperty("numViajes") + ": " + numViajes));
+            }
+            for (Viajes v : ArrViajes) {
+                System.out.println("\t" + (propiedades.getProperty("destino") + ": " + v.getDestino()));
+                System.out.println("\t" + (propiedades.getProperty("tiempo") + ": " + v.getTiempo()));
+                if (v.getAcompanyante() == Viajes.Acompanyante.AMIGOS) {
+                    System.out.println("\t" + (propiedades.getProperty("amigos")));
+                } else if (v.getAcompanyante() == Viajes.Acompanyante.FAMILIA) {
+                    System.out.println("\t" + (propiedades.getProperty("familia")));
+                } else {
+                    System.out.println("\t" + propiedades.getProperty("solo"));
+                }
+                System.out.println("\t" + (propiedades.getProperty("valoracion") + ": " + v.getValoracion()));
+                System.out.println("------------------------");
+
+            }
+        }
+    }
+
+    
 
     public String getNombre() {
         return nombre;
