@@ -53,7 +53,7 @@ public class Ficheros {
         System.out.println(propiedades.getProperty("mensajeOK"));
     }
 
-    public void leer() {
+    public void leer(String Propierties) {
         Scanner teclado = new Scanner(System.in);
         Viajero FicheroViajeroLectura;
         FileInputStream ficheroEntrada = null;
@@ -66,7 +66,7 @@ public class Ficheros {
             ObjectInputStream tuberiaEntrada = new ObjectInputStream(ficheroEntrada);
             
             FicheroViajeroLectura = (Viajero)tuberiaEntrada.readObject();
-            FicheroViajeroLectura.muestraViajero();
+            FicheroViajeroLectura.muestraViajero(Arx);
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }catch(IOException e){

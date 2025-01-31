@@ -39,11 +39,13 @@ public class Consola {
     Properties propiedades = new Properties();
     InputStream entrada = null;
     Viajero viajeroActual = new Viajero();
+    String ArchivoIdioma = Menu();
     
 
-    public int Menu() {
+    public String Menu() {
         Scanner teclado = new Scanner(System.in);
         int opcion = 0;
+        String idioma = "";
         try {
             do {
                 System.out.println("1. Spanish");
@@ -56,14 +58,17 @@ public class Consola {
                     switch (opcion) {
                         case 1:
                             entrada = new FileInputStream("esp.properties");
+                            idioma = "esp.properties";
                             MenuUsuario();
                             break;
                         case 2:
                             entrada = new FileInputStream("ing.properties");
+                            idioma = "ing.properties";
                             MenuUsuario();
                             break;
                         case 3:
                             entrada = new FileInputStream("fra.properties");
+                            idioma = "fra.properties";
                             MenuUsuario();
                             break;
                     }
@@ -81,7 +86,7 @@ public class Consola {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return opcion;
+        return idioma;
     }
 
     public void MenuUsuario() throws IOException {
@@ -106,7 +111,7 @@ public class Consola {
                     f.escribir(grupoViajero,nombretxt);
                     break;
                 case 2:
-                    f.leer();
+                    f.leer(ArchivoIdioma);
                     break;
                 case 3:
                     

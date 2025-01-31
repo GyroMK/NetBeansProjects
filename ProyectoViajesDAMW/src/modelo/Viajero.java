@@ -33,21 +33,10 @@ public class Viajero implements Serializable {
         this.numViajes = numViajes;
     }
 
-    public void muestraViajero() {
+    public void muestraViajero(String Properties) {
         Consola c = new Consola();
         InputStream entrada = null;
         Properties propiedades = new Properties();
-            try {
-                if (c.Menu() == 1) {
-                    entrada = new FileInputStream("esp.properties");
-                } else if (c.Menu() == 2) {
-                    entrada = new FileInputStream("ing.properties");
-                } else {
-                    entrada = new FileInputStream("fra.properties");
-                }
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Viajero.class.getName()).log(Level.SEVERE, null, ex);
-            }
 
             System.out.println("==============================");
             System.out.println((propiedades.getProperty("nombre") + ": " + nombre));
@@ -72,7 +61,7 @@ public class Viajero implements Serializable {
 
             }
         }
-    }
+    
 
     
 
